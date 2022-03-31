@@ -1,0 +1,57 @@
+    * {
+        margin: 0;
+        padding: 0;
+        top: 0;
+        box-sizing: border-box;
+    }
+    
+    .section {
+        padding: 0;
+    }
+    
+    .section .title {
+        padding-top: 1rem;
+        text-align: center;
+        font-size: 55px;
+        height: 10vh;
+        color: aliceblue;
+        background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+    }
+    
+    .search-city {
+        background-color: aquamarine;
+    }
+    
+    .weather-container {
+        padding-top: 1rem;
+    }
+    
+    .city-list {
+        padding-top: 2rem;
+        border-bottom: .5rem solid;
+        color: rgb(73, 72, 72);
+        width: 100%;
+    }
+    
+    .list-cities {
+        font-size: 20px;
+        margin: .2rem .2rem .2rem .2rem;
+    }
+    
+    .list-cities:hover {
+        color: blue;
+        cursor: pointer;
+    }
+    
+    .list-cities:active {
+        background-color: rgb(36, 184, 225);
+        color: aliceblue;
+    }
+    
+    .footer {
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background: rgb(254, 250, 250);
+    }

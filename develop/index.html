@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bulma css -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
+    <!-- jquery -->
+
+
+    <link href="./assets/css/style.css" rel="stylesheet">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <!-- Title -->
+    <section class="section">
+        <header>
+            <h1 class="title" id="header">Weather Dashboard</h1>
+        </header>
+    </section>
+
+
+    <!-- search section -->
+    <div class="tile is-ancestor weather-container">
+        <div class="tile is-vertical is-4 ">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child notification is-info">
+
+
+                        <div class="content">
+
+                            <!-- search input section -->
+                            <form class="search-input" id="user-city">
+                                <label class="form-label" for="city-name">
+                                    <p class="title">Search for a City:</p>
+                                </label>
+                                <div class="block">
+                                </div>
+                                <input class="input is-rounded is-primary is-focus is-medium form-input" type="text" name="city-name" id="city-name" placeholder="Enter a city">
+                                <div class="block">
+                                </div>
+                                <button class="button is-medium is-fullwidth is-rounded is-success search-btn" title="">Search</button>
+                                <div class="block city-list">
+                                </div>
+                            </form>
+
+
+                            <!-- nav bar -->
+                            <!-- <a class="navbar-item">
+                                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="Bulma">
+                            </a> -->
+
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-success">
+                <p class="title results"></p>
+                <p class="title city-name"></p>
+                <p class="subtile weather-attr"></p>
+                <div class="content weather-data">
+                </div>
+
+                <!-- <div class="tile notification is-warning is-child box">
+                    <p class="title is-3 five-day-forecast">5-Day Forecast:</p>
+                    <div class="content 5-day-forcast-data">
+                        sunny sunny sunny
+                    </div>
+                </div> -->
+            </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>copyright© 2022: Sopoan Meas</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js "></script>
+
+    <script deferr src="./assets/env/config.js"></script>
+    <script deferr src="./assets/js/weather.js"></script>
+</body>
+
+</html>
