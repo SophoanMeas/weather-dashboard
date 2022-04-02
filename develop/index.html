@@ -8,7 +8,8 @@
     <!-- bulma css -->
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
     <!-- jquery -->
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js "></script>
 
     <link href="./assets/css/style.css" rel="stylesheet">
     <title>Weather Dashboard</title>
@@ -22,8 +23,6 @@
         </header>
     </section>
 
-
-    <!-- search section -->
     <div class="tile is-ancestor weather-container">
         <div class="tile is-vertical is-4 ">
             <div class="tile">
@@ -34,19 +33,20 @@
                         <div class="content">
 
                             <!-- search input section -->
-                            <form class="search-input" id="user-city">
-                                <label class="form-label" for="city-name">
+                            <!-- <class class="search-input" id="user-city"> -->
+                            <div class="form">
+                                <label class="form-label" for="city">
                                     <p class="title">Search for a City:</p>
                                 </label>
                                 <div class="block">
                                 </div>
-                                <input class="input is-rounded is-primary is-focus is-medium form-input" type="text" name="city-name" id="city-name" placeholder="Enter a city">
+                                <input class="input is-rounded is-primary is-focus is-medium city-input" type="text" name="city-name" id="city-name" placeholder="Enter a city">
                                 <div class="block">
                                 </div>
                                 <button class="button is-medium is-fullwidth is-rounded is-success search-btn" title="">Search</button>
                                 <div class="block city-list">
                                 </div>
-                            </form>
+                            </div>
 
 
                             <!-- nav bar -->
@@ -61,19 +61,19 @@
         </div>
 
         <div class="tile is-parent">
-            <article class="tile is-child notification is-success">
-                <p class="title results"></p>
-                <p class="title city-name"></p>
+            <article class="tile is-child notification has-background-link-light">
+                <p class="title results list-of-cities current-city"></p>
+                <!-- <p class="title list-of-cities current-city"></p> -->
                 <p class="subtile weather-attr"></p>
                 <div class="content weather-data">
                 </div>
 
-                <!-- <div class="tile notification is-warning is-child box">
-                    <p class="title is-3 five-day-forecast">5-Day Forecast:</p>
-                    <div class="content 5-day-forcast-data">
-                        sunny sunny sunny
+                <div class="tile notification is-warning is-child box 5-day-forecast-header is-hidden">
+                    <p class="title is-3 pt-2 pl-4 5-day-forecast"></p>
+                    <div class="content pt-3 5-day-forcast-data">
+
                     </div>
-                </div> -->
+                </div>
             </article>
 
         </div>
@@ -88,9 +88,6 @@
             </p>
         </div>
     </footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js "></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js "></script>
 
     <script deferr src="./assets/env/config.js"></script>
     <script deferr src="./assets/js/weather.js"></script>
