@@ -9,7 +9,11 @@ let city = {
     lon: '',
 }
 
-let cityName = '';
+let searchHistory = {
+    city: []
+};
+
+let cityName;
 
 $(document).ready(function() {
 
@@ -106,16 +110,27 @@ $(document).ready(function() {
         return
     } // end of fetchWeatherForccast
 
-    function getCurrentWeather(city) {
+    function getCurrentWeather(res) {
 
         $('.weather-attr').after(`
-        <div class="weath-attr pt-5 pb-2">Temp: ${Math.round(city.current.temp)}°C</div>
-        <div class="weath-attr pt-2 pb-2">Wind: ${city.current.wind} km/h</P>
-        <div class="weath-attr pt-3 pb-2">Humidity: ${city.humid} %</div>
-        <div class="weath-attr pt-2 ">UV Index:<p class="uvi">${city.current.uvi}</p></div>
+        <div class="weath-attr pt-5 pb-2">Temp: ${Math.round(res.current.temp)}°C</div>
+        <div class="weath-attr pt-2 pb-2">Wind: ${res.current.wind_speed} km/h</P>
+        <div class="weath-attr pt-3 pb-2">Humidity: ${res.current.humidity} %</div>
+        <div class="weath-attr pt-2 ">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${res.current.uvi}</p></div>
         <br>
-        <div class="weath-attr is-size-6 ">*levels of risk: Low (0-2), Moderate (3-5), High (6-7), Very High (8-10), and Extreme (11+).</div>
+        <div class="weath-attr is-size-6 ">*levels of risk: Low (0-3), Moderate (3-5), High (6-7), Very High (8-10), and Extreme (11+).</div>
         `)
+    }
+
+    function uvIndexColor(uvi) {
+
+        if (uvi >= 0 && uvi <= 2) {
+            return 'favorable'
+        } else if (uvi >= 3 && uvi <= 5) {
+            return 'moderate'
+        } else {
+            return 'severe'
+        }
     }
 
     function getCurrentWeatherIcon(res) {
@@ -179,19 +194,17 @@ $(document).ready(function() {
     function onLoad() {
 
         if (localStorage.getItem('searchCity')) {
-            historyObj = JSON.parse(localStorage.getItem('searchCity'));
+            searchHistory = JSON.parse(localStorage.getItem('searchCity'));
         }
 
-        console.log(historyObj)
+        console.log(searchHistory)
     }
 
     function addHistory(cityName) {
 
-        historyObj.city.push(cityName);
-        localStorage.setItem('searchCity', JSON.stringify(historyObj));
+        searchHistory.city.push(cityName);
+        localStorage.setItem('searchCity', JSON.stringify(searchHistory));
     }
 
     onLoad()
 });
-
-var historyObj = { city: [] };

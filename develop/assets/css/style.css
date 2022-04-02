@@ -60,13 +60,37 @@
     font-size: 20px;
 }
 
-.weath-attr .uvi {
-    width: 5%;
+.weath-attr .favorable {
+    width: 7%;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
     display: inline-block;
     text-align: center;
-    background-color: #26a0da;
+    background-color: #19c51e;
+    border-radius: 6px;
+    border: 1px solid #100f10;
+    box-shadow: inset 0 0 2px #ebe4ec;
+}
+
+.weath-attr .moderate {
+    width: 7%;
+    margin-left: .5rem;
+    padding: 0 .5rem 0 .5rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #eeba0f;
+    border-radius: 6px;
+    border: 1px solid #100f10;
+    box-shadow: inset 0 0 2px #ebe4ec;
+}
+
+.weath-attr .severe {
+    width: 7%;
+    margin-left: .5rem;
+    padding: 0 .5rem 0 .5rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #e60505db;
     border-radius: 6px;
     border: 1px solid #100f10;
     box-shadow: inset 0 0 2px #ebe4ec;
