@@ -30,7 +30,7 @@ $(document).ready(function() {
             },
             success: function(res) {
                 // if successful
-                // console.log('list of cities', res)
+                console.log('list of cities', res)
                 searchResult(res)
             }
         })
