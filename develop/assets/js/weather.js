@@ -17,6 +17,7 @@ let cityName;
 
 $(document).ready(function() {
 
+
     function fetchCityInfo(city_name) {
         const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=10&lang=eng&exclude=local_names&appid=${config.apiKey}`
 
@@ -53,6 +54,7 @@ $(document).ready(function() {
         })
 
         $('.search-result-btn').on('click', function(event) {
+            event.stopPropagation();
             let element = event.target.dataset.number
             $('.results').text('')
             $('.ssearch-result-btn').remove()
@@ -76,7 +78,7 @@ $(document).ready(function() {
         city.lon = res[id].lon;
 
         $('.results').after(`
-            <p class="title mb-4 current-city is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
+            <p class="title current-city is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
             `)
 
         fetchWeatherForcast()
@@ -110,11 +112,10 @@ $(document).ready(function() {
 
         $('.weather-attr').after(`
         <div class="current-weather-content">
-        <div class="current-weather-data pt-5 pb-2">Temp: ${Math.round(res.current.temp)}°C</div>
-        <div class="current-weather-data pt-2 pb-2">Wind: ${res.current.wind_speed} km/h</P>
-        <div class="current-weather-data pt-3 pb-2">Humidity: ${res.current.humidity} %</div>
-        <div class="current-weather-data pt-2 ">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${res.current.uvi}</p></div>
-        <br>
+        <div class="current-weather-data mb-2">Temp: ${Math.round(res.current.temp)}°C</div>
+        <div class="current-weather-data">Wind: ${res.current.wind_speed} km/h</P>
+        <div class="current-weather-data mt-2 mb-2">Humidity: ${res.current.humidity} %</div>
+        <div class="current-weather-data data mb-2">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${Math.round(res.current.uvi)}</p></div>
         <div class="weath-attr is-size-6 ">*levels of risk: Low (0-3), Moderate (3-5), High (6-7), Very High (8-10), and Extreme (11+).</div>
         </div>
         `)
@@ -163,9 +164,9 @@ $(document).ready(function() {
         <p class="weather-icon">
         <img src="http://openweathermap.org/img/wn/${data[index].weather[0].icon}@2x.png" alt="${data[index].weather[0].description}">
         </p>
-        <p class="weather-attr pt-2 pb-2">Temp: ${Math.round(data[index].temp.day)} °C</p>
-        <p class="weather-attr pt-2 pb-2">Wind: ${data[index].wind_speed} km/h</p>
-        <p class="weather-attr pt-2 pb-2">Humidity: ${data[index].humidity} % </p>
+        <p class="weather-attr pb-1">Temp: ${Math.round(data[index].temp.day)} °C</p>
+        <p class="weather-attr pt-1 pb-1">Wind: ${data[index].wind_speed} km/h</p>
+        <p class="weather-attr pt-1 pb-1">Humidity: ${data[index].humidity} % </p>
         </div>
 
         </div>
@@ -200,18 +201,34 @@ $(document).ready(function() {
 
         if (localStorage.getItem('searchCity')) {
             searchHistory = JSON.parse(localStorage.getItem('searchCity'));
-        }
 
-        console.log(searchHistory)
+            $.each(searchHistory.city, function(index) {
+                console.log(searchHistory.city[index])
+                $('.dropdown-menu').append(`
+                <a class="dropdown-item" href="#"><p>${searchHistory.city[index]}</p></a>
+                `)
+            });
+        }
     }
 
     function addHistory(cityName) {
 
-        searchHistory.city.push(cityName);
-        localStorage.setItem('searchCity', JSON.stringify(searchHistory));
+        if (!searchHistory.city.includes(cityName)) {
+            searchHistory.city.push(cityName);
+            localStorage.setItem('searchCity', JSON.stringify(searchHistory));
+            $('.dropdown-menu').empty()
+            onLoad()
+        }
+        return
     }
 
+    $('.dropdown-menu').on('click', function(event) {
+        event.stopPropagation();
+        cityName = event.target.textContent
+
+        removeItems()
+        fetchCityInfo(cityName)
+    });
+
     onLoad()
-
-
 });

@@ -2,11 +2,23 @@
     --prim-color: aliceblue;
 }
 
-* {
+*,
+p {
+    margin-bottom: 0;
     margin: 0;
     padding: 0;
     top: 0;
     box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
 }
 
 .section {
@@ -14,20 +26,15 @@
 }
 
 .section .title {
-    padding-top: 1rem;
     text-align: center;
     font-size: 55px;
-    height: 10vh;
+    height: 8vh;
     color: var(--prim-color);
     background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
 }
 
 .search-city {
     background-color: aquamarine;
-}
-
-.weather-container {
-    padding-top: 1rem;
 }
 
 .city-list {
@@ -39,6 +46,18 @@
 
 .list-of-cities button {
     top: 2rem
+}
+
+.notification {
+    padding: .5rem 2.5rem 3rem 1.5rem
+}
+
+.search-btn {
+    background: no-repeat;
+    background-position: center;
+    background-position-x: 95%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-size: 1.5rem;
 }
 
 .search-result-btn {
@@ -101,16 +120,17 @@
 }
 
 .five-day-forecast-data {
+    text-align: center;
     background-color: #5e6970;
     width: 80%;
     border-radius: 1rem;
-    margin: 1.5rem 4rem 0 1rem;
+    margin: 1.5rem 3rem 0 3rem;
     box-shadow: -4px 7px 14px 5px #ffffff;
 }
 
 .five-day-forecast-data .date {
     color: var(--prim-color);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -120,10 +140,42 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.dropdown,
+.dropdown-menu {
+    width: 100%;
+}
+
+button.search-history-btn {
+    color: white;
+    margin-top: 2rem;
+    background-color: #7b8387;
+}
+
+.dropdown-item {
+    font-size: 25px;
+}
+
+.dropdown-item:hover {
+    background-color: #deb018;
+}
+
+a.dropdown-item:hover {
+    background-color: #eff1fa;
+}
+
+a.dropdown-item:active {
+    background-color: #9be4b8;
+}
+
+.dropdown-item p {
+    text-align: center;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
 .footer {
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
+    height: 50px;
     background: rgb(254, 250, 250);
 }
