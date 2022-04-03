@@ -29,7 +29,7 @@ $(document).ready(function() {
             },
             success: function(res) {
                 // if successful
-                // console.log(res)
+                console.log('list of cities', res)
                 searchResult(res)
             }
         })
@@ -43,22 +43,19 @@ $(document).ready(function() {
             return;
         }
 
-        if ($('.search-result').length) {
-            $('.search-result').remove()
-        }
-
-        $('.results').text('Results:')
+        $('.results').text(`Results: ${cityName}`)
+        $('.results').append('<br>')
         $.each(res, function(index) {
-            let cities = `${res[index].country} , ${checkStateExist(res, index)}`
-            $('.list-of-cities').after(`
-                <button class="button is-rounded search-result" data-number="${index}">${cities}</button>
+            let cities = `${res[index].name} , ${checkStateExist(res, index)}`
+            $('.list-of-cities').append(`
+            <button class="button is-rounded search-result-btn" data-number="${index}">${cities}</button>
                 `)
         })
 
-        $('.search-result').on('click', function(event) {
+        $('.search-result-btn').on('click', function(event) {
             let element = event.target.dataset.number
             $('.results').text('')
-            $('.search-result').remove()
+            $('.ssearch-result-btn').remove()
             displaySelectedCity(res, element)
 
         })
@@ -66,21 +63,20 @@ $(document).ready(function() {
     } // end of searchResult()
 
     function checkStateExist(res, index) {
-        if (!res[index].hasOwnProperty('state')) {
-            return (res[index].name)
-        } else {
+        if (res[index].hasOwnProperty('state')) {
             return (res[index].state)
+        } else {
+            return (res[index].country)
         }
     }
 
     function displaySelectedCity(res, id) {
 
-        city.cityName = res[id].name;
         city.lat = res[id].lat;
         city.lon = res[id].lon;
 
-        $('.current-city').after(`
-            <p class="title mb-4 current-city weather-icon is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
+        $('.results').after(`
+            <p class="title mb-4 current-city is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
             `)
 
         fetchWeatherForcast()
@@ -90,7 +86,7 @@ $(document).ready(function() {
     // get city weather data
     function fetchWeatherForcast() {
 
-        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=hourly,minutely,timezone&appid=${config.apiKey}`
+        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=hourly,minutely&appid=${config.apiKey}`
 
         $.ajax({
             method: 'GET',
@@ -113,13 +109,22 @@ $(document).ready(function() {
     function getCurrentWeather(res) {
 
         $('.weather-attr').after(`
-        <div class="weath-attr pt-5 pb-2">Temp: ${Math.round(res.current.temp)}°C</div>
-        <div class="weath-attr pt-2 pb-2">Wind: ${res.current.wind_speed} km/h</P>
-        <div class="weath-attr pt-3 pb-2">Humidity: ${res.current.humidity} %</div>
-        <div class="weath-attr pt-2 ">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${res.current.uvi}</p></div>
+        <div class="current-weather-content">
+        <div class="current-weather-data pt-5 pb-2">Temp: ${Math.round(res.current.temp)}°C</div>
+        <div class="current-weather-data pt-2 pb-2">Wind: ${res.current.wind_speed} km/h</P>
+        <div class="current-weather-data pt-3 pb-2">Humidity: ${res.current.humidity} %</div>
+        <div class="current-weather-data pt-2 ">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${res.current.uvi}</p></div>
         <br>
         <div class="weath-attr is-size-6 ">*levels of risk: Low (0-3), Moderate (3-5), High (6-7), Very High (8-10), and Extreme (11+).</div>
+        </div>
         `)
+    }
+
+    function getCurrentWeatherIcon(res) {
+
+        $('.current-city').after(`
+            <img class="current-weather-icon" src="http://openweathermap.org/img/wn/${res.current.weather[0].icon}@2x.png" alt="${res.current.weather[0].description}">
+            `)
     }
 
     function uvIndexColor(uvi) {
@@ -133,15 +138,6 @@ $(document).ready(function() {
         }
     }
 
-    function getCurrentWeatherIcon(res) {
-
-        const weather = res.current.weather
-        for (let i = 0; i < weather.length; i++) {
-            $('.weather-icon').after(`
-            <img src="http://openweathermap.org/img/wn/${weather[i].icon}@2x.png" alt="${weather[i].description}">
-            </div>`)
-        }
-    }
 
     function getFiveDayForecast(res) {
 
@@ -158,11 +154,11 @@ $(document).ready(function() {
 
     function displayFiveDayForcast(data, index) {
 
-        $('.5-day-forecast-header').removeClass('is-hidden')
-        $('.5-day-forecast').text('5-Day Forecast:')
-        $('.5-day-forcast-data').append(`
-        <div class="columns is-desktop is-inline-block ">
-        <div class="column five-day-forcast">
+        $('.five-day-forecast-header').removeClass('is-hidden')
+        $('.five-day-forecast').text('5-Day Forecast:')
+        $('.five-day-forecast-content').append(`
+        <div class="columns is-desktop is-inline-block five-day-forecast-wrapper">
+        <div class="column five-day-forecast-data">
         <p class="date">${date[index]}</p>
         <p class="weather-icon">
         <img src="http://openweathermap.org/img/wn/${data[index].weather[0].icon}@2x.png" alt="${data[index].weather[0].description}">
@@ -176,14 +172,23 @@ $(document).ready(function() {
         `)
     }
 
-    let removeContent = function() {
-        $('.show-results').remove()
-        $('.search-result').remove()
+    function removeItems() {
+        if ($('.weather-container').length) {
+            $('.search-result').remove()
+            $('.current-city').html('')
+            $('.current-city').remove()
+            $('.current-weather-icon').remove()
+            $('.current-weather-content').remove()
+            $('.five-day-forecast-header').addClass('is-hidden')
+            $('.five-day-forecast-wrapper').remove()
+        }
     }
 
     let getCityName = function handleSubmit() {
+        removeItems()
+        let tempName = $(this).siblings('.city-input').val()
+        cityName = tempName.charAt(0).toUpperCase() + tempName.slice(1)
 
-        cityName = $(this).siblings('.city-input').val()
         $('.city-input').val('')
         addHistory(cityName)
         fetchCityInfo(cityName)
@@ -207,4 +212,6 @@ $(document).ready(function() {
     }
 
     onLoad()
+
+
 });

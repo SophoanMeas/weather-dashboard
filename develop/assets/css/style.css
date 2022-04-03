@@ -37,17 +37,21 @@
     width: 100%;
 }
 
-.search-result {
-    font-size: 20px;
-    margin: .2rem .2rem .2rem .2rem;
+.list-of-cities button {
+    top: 2rem
 }
 
-.search-result:hover {
+.search-result-btn {
+    margin: .2rem .2rem .2rem .2rem;
+    font-size: 20px;
+}
+
+.search-result-btn:hover {
     color: rgb(243, 123, 12);
     cursor: pointer;
 }
 
-.search-result:active {
+.search-result-btn:active {
     background-color: rgb(36, 184, 225);
     color: var(--prim-color);
 }
@@ -56,11 +60,11 @@
     font-weight: bold;
 }
 
-.weath-attr {
+.current-weather-data {
     font-size: 20px;
 }
 
-.weath-attr .favorable {
+.current-weather-data .favorable {
     width: 7%;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
@@ -72,7 +76,7 @@
     box-shadow: inset 0 0 2px #ebe4ec;
 }
 
-.weath-attr .moderate {
+.current-weather-data .moderate {
     width: 7%;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
@@ -84,7 +88,7 @@
     box-shadow: inset 0 0 2px #ebe4ec;
 }
 
-.weath-attr .severe {
+.current-weather-data .severe {
     width: 7%;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
@@ -96,26 +100,21 @@
     box-shadow: inset 0 0 2px #ebe4ec;
 }
 
-img {
-    height: 60px;
-    width: 60px;
-}
-
-.five-day-forcast {
-    background-color: #2a4454;
+.five-day-forecast-data {
+    background-color: #5e6970;
     width: 80%;
     border-radius: 1rem;
     margin: 1.5rem 4rem 0 1rem;
-    box-shadow: -4px 7px 14px 5px #000000;
+    box-shadow: -4px 7px 14px 5px #ffffff;
 }
 
-.five-day-forcast .date {
+.five-day-forecast-data .date {
     color: var(--prim-color);
     font-size: 22px;
     font-weight: bold;
 }
 
-.five-day-forcast .weather-attr {
+.five-day-forecast-data .weather-attr {
     color: var(--prim-color);
     font-size: 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
