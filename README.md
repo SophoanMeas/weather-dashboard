@@ -44,4 +44,4 @@
   * ![#e60505db](https://via.placeholder.com/15/e60505db/000000?text=+) `Severe` 
   
 ## Screenshot
-![Alt text](https://github.com/SophoanMeas/weather-dashboard/develop/assets/img/screen-shot.gif)
+![Alt text](https://github.com/SophoanMeas/weather-dashboard/blob/develop/develop/assets/img/screen-shot.gif)
