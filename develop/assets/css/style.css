@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Finger+Paint&display=swap');
 :root {
     --prim-color: aliceblue;
 }
@@ -26,11 +27,12 @@ body {
 }
 
 .section .title {
+    font-family: 'Finger Paint', cursive;
     text-align: center;
-    font-size: 55px;
-    height: 8vh;
-    color: var(--prim-color);
-    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%)
+    font-size: 65px;
+    height: 10vh;
+    color: rgb(249, 249, 249);
+    background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
 }
 
 .search-city {
@@ -83,8 +85,41 @@ body {
     font-size: 20px;
 }
 
+.index .uvi-favorable {
+    justify-content: space-around;
+    max-width: 15vh;
+    margin-left: .5rem;
+    padding: 0 .5rem 0 .5rem;
+    text-align: center;
+    background-color: #19c51e;
+    border-radius: 6px;
+    border: 1px solid #100f10;
+}
+
+.index .uvi-moderate {
+    justify-content: space-around;
+    max-width: 15vh;
+    margin-left: .5rem;
+    padding: 0 .5rem 0 .5rem;
+    text-align: center;
+    background-color: #eeba0f;
+    border-radius: 6px;
+    border: 1px solid #100f10;
+}
+
+.index .uvi-severe {
+    justify-content: space-around;
+    max-width: 15vh;
+    margin-left: .5rem;
+    padding: 0 .5rem 0 .5rem;
+    text-align: center;
+    background-color: #e60505db;
+    border-radius: 6px;
+    border: 1px solid #100f10;
+}
+
 .current-weather-data .favorable {
-    width: 7%;
+    min-width: 10vh;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
     display: inline-block;
@@ -96,7 +131,7 @@ body {
 }
 
 .current-weather-data .moderate {
-    width: 7%;
+    min-width: 10vh;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
     display: inline-block;
@@ -108,7 +143,7 @@ body {
 }
 
 .current-weather-data .severe {
-    width: 7%;
+    min-width: 10vh;
     margin-left: .5rem;
     padding: 0 .5rem 0 .5rem;
     display: inline-block;

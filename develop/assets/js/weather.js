@@ -116,8 +116,14 @@ $(document).ready(function() {
         <div class="current-weather-data">Wind: ${res.current.wind_speed} km/h</P>
         <div class="current-weather-data mt-2 mb-2">Humidity: ${res.current.humidity} %</div>
         <div class="current-weather-data data mb-2">UV Index:<p class="${uvIndexColor(res.current.uvi)}">${Math.round(res.current.uvi)}</p></div>
-        <div class="weath-attr is-size-6 ">*levels of risk: Low (0-3), Moderate (3-5), High (6-7), Very High (8-10), and Extreme (11+).</div>
+        <div class="weath-attr is-size-6 mt-3">*levels of risk:
         </div>
+        <div class="index is-flex"> 
+        <div class="uvi-favorable is-size-6">Favorable (0-3)</div>
+        <div class="uvi-moderate is-size-6">Moderate (3-5)</div>
+        <div class="uvi-severe is-size-6">High (6-7)</div></div>
+        </div>
+  
         `)
     }
 
