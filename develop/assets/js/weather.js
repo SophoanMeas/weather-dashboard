@@ -19,7 +19,7 @@ $(document).ready(function() {
 
 
     function fetchCityInfo(city_name) {
-        const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=10&lang=eng&exclude=local_names&appid=${config.apiKey}`
+        const apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city_name}&limit=10&lang=eng&exclude=local_names&appid=${apiKey}`
 
         $.ajax({
             method: 'GET',
@@ -88,7 +88,7 @@ $(document).ready(function() {
     // get city weather data
     function fetchWeatherForcast() {
 
-        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=hourly,minutely&appid=${config.apiKey}`
+        const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${city.lat}&lon=${city.lon}&units=metric&exclude=hourly,minutely&appid=${apiKey}`
 
         $.ajax({
             method: 'GET',
