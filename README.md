@@ -37,7 +37,7 @@
 * 🌞 The app display 5 day forecast 
 * 🌞 The app save the search history locally and load the data when the user click the search button or run the app again
 * 🌞 The app display the city temperature, wind speed, humidity and UV index rating
-* 🌞 The UV index is color coded to indicate the rating time
+* 🌞 The UV index is color coded to indicate current UV level
   
   * ![#19c51e](https://via.placeholder.com/15/19c51e/000000?text=+) `Favorable` 
   * ![#eeba0f](https://via.placeholder.com/15/eeba0f/000000?text=+) `Moderate`
