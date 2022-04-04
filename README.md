@@ -1,4 +1,4 @@
-<h1 align="center">Server Side Apis
+<h1 align="center">Server Side APIs
   
 # Weather Dashboard ☁️❄️⛅🌩️☀️🌨️🌧️
   
@@ -44,4 +44,5 @@
   * ![#e60505db](https://via.placeholder.com/15/e60505db/000000?text=+) `Severe` 
   
 ## Screenshot
-![Alt text](https://sophoanmeas.github.io/weather-dashboard/develop/assets/img/screen-shot.png)
+![Alt text](https://github.com/SophoanMeas/weather-dashboard/blob/develop/develop/assets/img/screen-shot.png?raw=true)
+
