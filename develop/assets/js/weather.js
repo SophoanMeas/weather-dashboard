@@ -121,7 +121,7 @@ $(document).ready(function() {
         <div class="index is-flex"> 
         <div class="uvi-favorable is-size-6">Favorable (0-3)</div>
         <div class="uvi-moderate is-size-6">Moderate (3-5)</div>
-        <div class="uvi-severe is-size-6">High (6-7)</div></div>
+        <div class="uvi-severe is-size-6">High (6-7+)</div></div>
         </div>
   
         `)
