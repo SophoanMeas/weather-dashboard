@@ -1,4 +1,4 @@
-<h1 align="center">Server Side Apis
+<h1 align="center">Server Side APIs
   
 # Weather Dashboard ☁️❄️⛅🌩️☀️🌨️🌧️
   
