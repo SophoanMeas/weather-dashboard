@@ -35,10 +35,6 @@ body {
     background-image: linear-gradient(to right, #314755 0%, #26a0da 51%, #314755 100%);
 }
 
-.search-city {
-    background-color: aquamarine;
-}
-
 .city-list {
     padding-top: 2rem;
     border-bottom: .5rem solid;
@@ -78,6 +74,7 @@ body {
 }
 
 .current-city {
+    color: #eff1fa;
     font-weight: bold;
 }
 
@@ -213,4 +210,21 @@ a.dropdown-item:active {
 .footer {
     height: 50px;
     background: rgb(254, 250, 250);
+}
+
+@media screen and (max-width: 600px) {
+    .section .title {
+        padding-top: 1rem;
+        font-size: 35px;
+        height: 8vh;
+    }
+    .form-label .title {
+        font-size: 25px;
+    }
+    .index .uvi-favorable,
+    .uvi-moderate,
+    .uvi-severe {
+        width: fit-content;
+        font-size: 13px!important;
+    }
 }

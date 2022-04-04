@@ -30,7 +30,7 @@ $(document).ready(function() {
             },
             success: function(res) {
                 // if successful
-                console.log('list of cities', res)
+                // console.log('list of cities', res)
                 searchResult(res)
             }
         })
@@ -78,7 +78,7 @@ $(document).ready(function() {
         city.lon = res[id].lon;
 
         $('.results').after(`
-            <p class="title current-city is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
+            <p class="title current-city has-text-white is-inline">${res[id].name}, ${res[id].country} (${currentDate})</p
             `)
 
         fetchWeatherForcast()
@@ -148,13 +148,13 @@ $(document).ready(function() {
 
     function getFiveDayForecast(res) {
 
-        for (let i = 0; i < 5; i++) {
-            date[i] = moment().add(i, 'days').format('DD/MM/YY')
+        for (let i = 0; i <= 5; i++) {
+            date[i] = moment().add(i, 'days').format('MM/DD/YY')
         }
 
         $.each(res.daily, (index) => {
             if (index < 5) {
-                displayFiveDayForcast(res.daily, index)
+                displayFiveDayForcast(res.daily, index + 1)
             }
         });
     }
